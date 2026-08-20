@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Careers App Screen" description="Mobile job-feed screen built from TecAce primitives (SearchField, Category, Card, Avatar, ContentBadge, Chip, BottomNavigation)." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  body{margin:0;background:#eef1f5;font-family:var(--font-sans)}
+  .phone{width:390px;height:760px;margin:24px auto;background:var(--background-normal-normal,#fff);border-radius:36px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(23,23,25,0.18);display:flex;flex-direction:column}
+  .hd{display:flex;align-items:center;padding:16px;box-shadow:inset 0 -1px 0 rgba(112,115,124,0.12)}
+  .hd h1{flex:1;margin:0;font:700 22px/1.3 var(--font-sans);letter-spacing:-0.019em;color:var(--label-normal)}
+  .scroll{flex:1;overflow-y:auto;padding:12px 16px 16px}
+  .scroll::-webkit-scrollbar{display:none}
+  .job{display:flex;gap:12px}
+  .logo{width:44px;height:44px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font:700 15px/1 var(--font-display);color:var(--primary-normal);background:var(--blue-95,rgb(238,246,255));flex-shrink:0}
+  .role{font:600 16px/1.4 var(--font-sans);color:var(--label-normal)}
+  .meta{font:500 13px/1.4 var(--font-sans);color:var(--label-neutral);margin-top:2px}
+  .co{font:500 12px/1.3 var(--font-sans);color:var(--label-alternative)}
+  .tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+</style>
+</helmet>
+<div class="phone">
+  <div class="hd"><h1>채용</h1>
+    <x-import component-from-global-scope="TecAceDesignSystem_64e6de.IconButton" aria-label="알림" hint-size="40px,40px">🔔</x-import>
+  </div>
+  <div style="padding:12px 16px 4px">
+    <x-import component-from-global-scope="TecAceDesignSystem_64e6de.SearchField" placeholder="채용 검색" hint-size="100%,44px"></x-import>
+  </div>
+  <div style="padding:8px 16px 0">
+    <x-import component-from-global-scope="TecAceDesignSystem_64e6de.Category" items="{{ cats }}" value="{{ cat }}" onChange="{{ setCat }}" hint-size="100%,40px"></x-import>
+  </div>
+  <div class="scroll">
+    <div style="font:600 13px/1.4 var(--font-sans);color:var(--label-alternative);margin:8px 0 12px">{{ count }}개의 포지션</div>
+    <sc-for list="{{ jobs }}" as="job" hint-placeholder-count="3">
+      <div style="margin-bottom:12px">
+        <x-import component-from-global-scope="TecAceDesignSystem_64e6de.Card" variant="outlined" hint-size="100%,120px">
+          <div class="job">
+            <span class="logo">{{ job.abbr }}</span>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+                <x-import component-from-global-scope="TecAceDesignSystem_64e6de.ContentBadge" label="{{ job.badge }}" color="{{ job.badgeColor }}" size="sm" hint-size="48px,20px"></x-import>
+                <span class="co">{{ job.co }}</span>
+              </div>
+              <div class="role">{{ job.role }}</div>
+              <div class="meta">{{ job.loc }}</div>
+              <div class="tags">
+                <sc-for list="{{ job.tags }}" as="t" hint-placeholder-count="2">
+                  <x-import component-from-global-scope="TecAceDesignSystem_64e6de.Chip" label="{{ t }}" size="xs" variant="alternative" hint-size="52px,26px"></x-import>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+    </sc-for>
+  </div>
+  <x-import component-from-global-scope="TecAceDesignSystem_64e6de.BottomNavigation" items="{{ nav }}" value="{{ tab }}" onChange="{{ setTab }}" hint-size="100%,68px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: '전체', tab: 'jobs' };
+  renderVals() {
+    const cats = ['전체','개발','디자인','기획','데이터','마케팅'];
+    const all = [
+      { abbr:'토', co:'토스', color:'#0064FF', role:'Frontend Engineer', loc:'서울 · 강남구', tags:['React','정규직'], badge:'채용중', badgeColor:'primary', cat:'개발' },
+      { abbr:'배', co:'배민', color:'#2AC1BC', role:'Product Designer', loc:'서울 · 송파구', tags:['Figma','경력 3년+'], badge:'신규', badgeColor:'primary', cat:'디자인' },
+      { abbr:'카', co:'카카오', color:'#191919', role:'Data Scientist', loc:'판교 · 분당구', tags:['Python','ML'], badge:'채용중', badgeColor:'primary', cat:'데이터' },
+      { abbr:'네', co:'네이버', color:'#03C75A', role:'Backend Engineer', loc:'분당 · 정자동', tags:['Kotlin','대규모'], badge:'마감임박', badgeColor:'negative', cat:'개발' },
+    ];
+    const cat = this.state.cat;
+    const jobs = cat === '전체' ? all : all.filter(j => j.cat === cat);
+    const nav = [
+      { label:'홈', value:'home' }, { label:'채용', value:'jobs' },
+      { label:'소셜', value:'social' }, { label:'마이', value:'my' },
+    ];
+    return {
+      cats, cat, jobs, nav, count: jobs.length, tab: this.state.tab,
+      setCat: (v) => this.setState({ cat: v }),
+      setTab: (v) => this.setState({ tab: v }),
+    };
+  }
+}
+</script>
+</body>
+</html>

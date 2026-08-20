@@ -1,0 +1,5 @@
+/* TecAce — base element defaults */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);color:var(--label-normal,rgb(23,23,23));background:var(--background-normal-normal,#fff);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--primary-normal,rgb(17,109,255));text-decoration:none}
+a:hover{color:var(--primary-strong,rgb(14,100,230))}

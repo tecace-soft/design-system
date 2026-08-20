@@ -1,0 +1,28 @@
+/* TecAce Design System — webfonts
+   Pretendard = Korean/Latin UI face (also aliased as "Pretendard JP", used in source).
+   Poppins    = Latin display / numeric face.
+   Local files: Pretendard Thin(100)/ExtraLight(200)/Medium(500)/Bold(700); Poppins Thin..Bold.
+   SUBSTITUTION: Pretendard Regular(400) & SemiBold(600) were not provided — supplemented
+   from the Pretendard CDN (SIL OFL). Replace with local files when available. */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+/* ---- Pretendard (local weights) ---- */
+@font-face{font-family:"Pretendard";font-weight:100;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Thin.otf") format("opentype")}
+@font-face{font-family:"Pretendard";font-weight:200;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-ExtraLight.otf") format("opentype")}
+@font-face{font-family:"Pretendard";font-weight:500;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Medium.otf") format("opentype")}
+@font-face{font-family:"Pretendard";font-weight:700;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Bold.otf") format("opentype")}
+
+/* ---- Pretendard JP alias (source references this name) → same local faces ---- */
+@font-face{font-family:"Pretendard JP";font-weight:100;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Thin.otf") format("opentype")}
+@font-face{font-family:"Pretendard JP";font-weight:200;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-ExtraLight.otf") format("opentype")}
+@font-face{font-family:"Pretendard JP";font-weight:500;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Medium.otf") format("opentype")}
+@font-face{font-family:"Pretendard JP";font-weight:700;font-style:normal;font-display:swap;src:url("../assets/fonts/Pretendard-Bold.otf") format("opentype")}
+
+/* ---- Poppins (local) ---- */
+@font-face{font-family:"Poppins";font-weight:100;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-Thin.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-weight:300;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-Light.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-weight:400;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-Regular.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-weight:500;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-Medium.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-weight:600;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-SemiBold.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-weight:700;font-style:normal;font-display:swap;src:url("../assets/fonts/Poppins-Bold.ttf") format("truetype")}

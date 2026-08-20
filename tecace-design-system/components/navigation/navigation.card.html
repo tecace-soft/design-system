@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Navigation" subtitle="Tab, Category, Bottom Navigation" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;padding:24px;background:var(--background-normal-normal,#fff)}.lbl{font:600 12px/1 var(--font-sans);color:var(--label-alternative,#8a8d94);letter-spacing:.02em;text-transform:uppercase;margin:12px 0 8px}</style></head>
+<body><div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Tab, Category, BottomNavigation } = window.TecAceDesignSystem_64e6de;
+const ic = (d) => <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d={d}/></svg>;
+function Demo(){
+  const [t,setT]=React.useState('home');const [c,setC]=React.useState('전체');const [b,setB]=React.useState('home');
+  return (<div>
+   <div class="lbl">Tab</div>
+   <Tab value={t} onChange={setT} items={[{label:'홈',value:'home'},{label:'채용',value:'jobs'},{label:'커뮤니티',value:'community'},{label:'마이',value:'my'}]}/>
+   <div class="lbl">Category</div>
+   <Category value={c} onChange={setC} items={['전체','개발','디자인','기획','마케팅','데이터']}/>
+   <div class="lbl">Bottom Navigation</div>
+   <div style={{maxWidth:390,border:'1px solid var(--line-normal)',borderRadius:16,overflow:'hidden'}}>
+     <BottomNavigation value={b} onChange={setB} items={[
+       {label:'홈',value:'home',icon:ic('M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3z')},
+       {label:'채용',value:'jobs',icon:ic('M9 3h6v2h5v14H4V5h5zM11 5v0h2V5z')},
+       {label:'소셜',value:'social',icon:ic('M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.7-8 6v1h16v-1c0-3.3-3.6-6-8-6z')},
+       {label:'마이',value:'my',icon:ic('M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.7-8 6v1h16v-1c0-3.3-3.6-6-8-6z')}]}/>
+   </div>
+  </div>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>
